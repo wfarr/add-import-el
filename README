@@ -1,0 +1,3 @@
+Originally written exclusively for Perl modules, this code will eventually be
+made as language-agnostic as it can be so it can automatically handle putting
+import statements at the top of files (or in the appropriate space).
