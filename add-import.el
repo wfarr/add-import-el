@@ -13,7 +13,7 @@
 (defun find-language ()
   ;; check major mode
   (cond (major-mode
-         (let* ((current-mode (symbol-name major-mode)))
+         (let ((current-mode (symbol-name major-mode)))
            (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
            (match-string 1 current-mode))))
 ;;TODO
