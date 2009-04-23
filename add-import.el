@@ -2,6 +2,25 @@
 
 (require 'thingatpt)
 
+(defvar add-import-languages
+  '(
+    ;; (lang . '(finder getter keyword wrapper ending_punctuation))
+    (perl . ("[:alpha:]:\\->" "[[:alpha:]:]+" "use" nil ";"))
+    (ruby . ("[:alpha:]:" "[[:alpha:]:]+" "require" "'" nil))
+    )
+  )
+
+(defun find-language ()
+  ;; check major mode
+  (cond (major-mode
+         (let* ((current-mode (symbol-name major-mode)))
+           (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
+           (match-string 1 current-mode))))
+;;TODO
+;; check file extension
+;; check shebang
+)
+
 (defun bounds-of-module-at-point ()
   "Determine where a module name starts for (thing-at-point 'perl-module)"
   (save-excursion
