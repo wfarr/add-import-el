@@ -32,7 +32,6 @@
 
 ; allow (thing-at-point 'perl-module)
 (put 'perl-module 'bounds-of-thing-at-point 'bounds-of-module-at-point)
-    
 
 (defun read-with-default (string &optional default error)
   (let ((read (read-string
