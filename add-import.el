@@ -10,7 +10,7 @@
     )
   )
 
-(defun find-language ()
+(defun add-import-find-language ()
   (cond
    ;; check major mode
    ((not (string= major-mode "fundamental-mode"))
