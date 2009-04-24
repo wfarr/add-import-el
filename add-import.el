@@ -24,7 +24,11 @@
         (if (string-match (car pair) bufname)
             (let ((current-mode (symbol-name (cdr pair))))
               (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
-              (return (match-string 1 current-mode))))))))
+              (return (match-string 1 current-mode)))))))
+   (language
+    (let ((current-mode (symbol-name language)))
+      (string-match "^\\([[:alpha:]-]+\\)" current-mode)
+      (return (match-string 0 current-mode)))))
   ;; check shebang
   )
 
