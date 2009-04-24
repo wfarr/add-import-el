@@ -16,7 +16,7 @@
    ((not (string= major-mode "fundamental-mode"))
     (let ((current-mode (symbol-name major-mode)))
       (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
-      (match-string 1 current-mode)))
+      (return (match-string 1 current-mode))))
    ;; check extension
    ((or (buffer-file-name) (buffer-name))
     (let ((bufname (or (buffer-file-name) (buffer-name))))
