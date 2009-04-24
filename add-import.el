@@ -25,11 +25,11 @@
             (let ((current-mode (symbol-name (cdr pair))))
               (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
               (return (match-string 1 current-mode)))))))
+   ;; check buffer-local var language
    (language
     (let ((current-mode (symbol-name language)))
       (string-match "^\\([[:alpha:]-]+\\)" current-mode)
       (return (match-string 0 current-mode)))))
-  ;; check shebang
   )
 
 (defun bounds-of-module-at-point ()
