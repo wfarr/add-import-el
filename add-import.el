@@ -11,14 +11,23 @@
   )
 
 (defun find-language ()
-  ;; check major mode
-  (cond (major-mode
-         (let ((current-mode (symbol-name major-mode)))
-           (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
-           (match-string 1 current-mode))))
-;;TODO
-;; check file extension
-;; check shebang
+  (cond
+   ;; check major mode
+   ((not (string= major-mode "fundamental-mode"))
+    (let ((current-mode (symbol-name major-mode)))
+      (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
+      (match-string 1 current-mode)))
+   ;; check extension
+   ((or (and (buffer-file-name)
+             (string-match "\.\\([:alpha:]+\\)$" (buffer-file-name)))
+        (string-match "\.\\([:alpha:]+\\)$" (buffer-name)))
+    (let ((bufname (or (buffer-file-name) (buffer-name))))
+      (dolist (pair auto-mode-alist)
+        (if (string-match (car pair) bufname)
+            (let ((current-mode (symbol-name (cdr pair))))
+              (string-match "^\\([[:alpha:]-]+\\)\\-mode" current-mode)
+              (return (match-string 1 current-mode))))))))
+  ;; check shebang
 )
 
 (defun bounds-of-module-at-point ()
