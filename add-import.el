@@ -1,4 +1,4 @@
-;;; Original Author: Jonathon Rockway
+;;; Original Author: Jonathan Rockway
 
 (require 'thingatpt)
 
